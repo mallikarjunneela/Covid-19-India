@@ -17,7 +17,7 @@ const initializeDbAndServer = async () => {
       driver: sqlite3.Database,
     });
     app.listen(3000, () =>
-      console.log("Server Running at http://localhost:3000/states/")
+      console.log("Server Running at http://localhost:3000/")
     );
   } catch (error) {
     console.log(`DB Error: ${error.message}`);
@@ -43,7 +43,7 @@ app.get("/states/", async (request, response) => {
       state;`;
   const statesArray = await database.all(getStatesQuery);
   response.send(
-    statesArray.map((eachPlayer) => convertDbObjectToResponseObject(eachState))
+    statesArray.map((eachState) => convertDbObjectToResponseObject(eachState))
   );
 });
 
